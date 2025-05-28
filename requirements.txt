@@ -1,0 +1,17 @@
+streamlit
+pandas
+numpy
+matplotlib
+seaborn
+yfinance
+openai
+fpdf
+schedule
+scikit-learn
+torch
+statsmodels
+beautifulsoup4
+requests
+python-telegram-bot
+streamlit-autorefresh
+pydeck
