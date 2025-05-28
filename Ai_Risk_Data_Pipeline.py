@@ -1,4 +1,3 @@
-# (여기에 최신 코드가 삽입됩니다)
 # AI 버블 리스크 예측을 위한 데이터 수집 파이프라인 및 예측 모델 프로토타입
 # 필요한 라이브러리 불러오기
 from statsmodels.tsa.stattools import grangercausalitytests
@@ -43,6 +42,9 @@ def init_email_db():
     conn.commit()
     conn.close()
 
+# 앱 실행 시 DB 초기화
+init_email_db()
+
 def save_email(email):
     conn = sqlite3.connect(USER_EMAILS_DB)
     c = conn.cursor()
@@ -68,6 +70,7 @@ with st.sidebar:
             st.success(f"{user_email_input} 이메일이 등록되었습니다.")
 
 # 사용자 전체에게 이메일 전송 기능
+
 def send_email_report_to_all(filename):
     recipients = get_all_emails()
     for email in recipients:
@@ -83,6 +86,7 @@ def simulate_portfolio_adjustment(cri):
     return weights
 
 # 리밸런싱 결과 시각화
+
 def show_portfolio_adjustment(weights):
     st.subheader("💼 리스크 기반 포트폴리오 비중 조정")
     fig, ax = plt.subplots()
@@ -90,6 +94,7 @@ def show_portfolio_adjustment(weights):
     st.pyplot(fig)
 
 # 포트폴리오 시뮬레이션 실행
+latest_cri = 0.65  # 임시 더미 값 (예측 모델과 연동 필요)
 adjusted_weights = simulate_portfolio_adjustment(latest_cri)
 show_portfolio_adjustment(adjusted_weights)
 
